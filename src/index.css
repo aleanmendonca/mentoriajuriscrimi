@@ -1,0 +1,165 @@
+:root {
+  --primary: #DC2626;
+  --primary-dark: #DC2626;
+  --primary-glow: rgba(220, 38, 38, 0.30);
+  --primary-subtle: rgba(255, 159, 136, 0.5561);
+  --black: #000000;
+  --white: #FFFFFF;
+  --gray: #ACACAC;
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-main);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Animations */
+@keyframes brilho {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes gradient-rotate {
+  to { --gradient-angle: 360deg; }
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Sections */
+  section {
+    padding: 60px 20px !important;
+  }
+
+  /* Section Headers */
+  .section-header {
+    margin-bottom: 30px !important;
+  }
+
+  h2 {
+    font-size: clamp(26px, 5vw, 36px) !important;
+  }
+
+  /* Grids - force 1 column */
+  .topics-grid,
+  .diff-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  /* Cards */
+  .professor-card {
+    width: 260px !important;
+  }
+
+  /* Pricing */
+  .price-card {
+    padding: 30px 20px !important;
+    max-width: 100% !important;
+  }
+
+  .price-value {
+    fontSize: 42px !important;
+  }
+
+  /* Discount badge */
+  .discount-badge {
+    font-size: 36px !important;
+    padding: 15px 20px !important;
+  }
+
+  /* FAQ */
+  .faq-question {
+    font-size: 15px !important;
+    padding: 18px 0 !important;
+  }
+
+  /* Check items */
+  .check-item {
+    padding: 12px 0 !important;
+  }
+
+  /* Schedule */
+  .schedule-day {
+    padding: 25px !important;
+  }
+
+  /* Testimonials */
+  .testi-card {
+    padding: 20px !important;
+  }
+
+  /* Carousel - hide arrows on mobile */
+  .carousel-btn-left,
+  .carousel-btn-right {
+    display: none !important;
+  }
+}
+
+/* Touch-friendly on mobile */
+@media (max-width: 768px) {
+  button, a[role="button"] {
+    min-height: 44px;
+  }
+}
