@@ -567,19 +567,37 @@ function Hero() {
       paddingLeft: isMobile ? '0' : '30px',
       paddingRight: isMobile ? '0' : '30px',
     }}>
-      {/* Background Image - mobile ou desktop */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: isMobile ? 'auto' : '100%',
-        backgroundImage: isMobile ? 'url(/heromobile.jpg)' : 'url(/hero.jpg)',
-        backgroundSize: isMobile ? 'contain' : 'cover',
-        backgroundPosition: 'top center',
-        backgroundRepeat: 'no-repeat',
-        zIndex: 0,
-      }} />
+      {/* Background Image */}
+      {isMobile ? (
+        /* Mobile: usa img tag para mostrar imagem inteira */
+        <div style={{ position: 'relative', width: '100%', zIndex: 0 }}>
+          <img
+            src="/heromobile.jpg"
+            alt=""
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              objectFit: 'contain',
+              maxHeight: '70vh'
+            }}
+          />
+        </div>
+      ) : (
+        /* Desktop: usa background image */
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: 'url(/hero.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+          zIndex: 0,
+        }} />
+      )}
       {/* Overlay com gradiente de baixo para cima */}
       <div style={{
         position: 'absolute',
@@ -588,13 +606,13 @@ function Hero() {
         right: 0,
         bottom: 0,
         background: isMobile
-          ? 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.95) 70%, rgba(0,0,0,1) 100%)'
+          ? 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,1) 100%)'
           : 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0) 100%)',
         zIndex: 1,
       }} />
       <div style={{
         ...styles.heroContent,
-        paddingTop: isMobile ? '45vh' : '0',
+        paddingTop: isMobile ? '0' : '0',
         paddingLeft: isMobile ? '20px' : '0',
         paddingRight: isMobile ? '20px' : '0',
       }}>
