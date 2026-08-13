@@ -562,8 +562,8 @@ function Hero() {
   return (
     <section style={{
       ...styles.hero,
-      paddingTop: isMobile ? '0' : '590px',
-      paddingBottom: isMobile ? '40px' : '80px',
+      paddingTop: isMobile ? '0' : '700px',
+      paddingBottom: isMobile ? '40px' : '100px',
       paddingLeft: isMobile ? '0' : '30px',
       paddingRight: isMobile ? '0' : '30px',
     }}>
@@ -573,10 +573,10 @@ function Hero() {
         top: 0,
         left: 0,
         right: 0,
-        height: isMobile ? '60vh' : 'auto',
+        bottom: 0,
         backgroundImage: isMobile ? 'url(/heromobile.jpg)' : 'url(/hero.jpg)',
-        backgroundSize: isMobile ? '100% auto' : 'cover',
-        backgroundPosition: isMobile ? 'top center' : 'center top',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',
         zIndex: 0,
       }} />
