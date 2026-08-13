@@ -573,10 +573,10 @@ function Hero() {
         top: 0,
         left: 0,
         right: 0,
-        bottom: 0,
+        height: isMobile ? 'auto' : '100%',
         backgroundImage: isMobile ? 'url(/heromobile.jpg)' : 'url(/hero.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: isMobile ? 'top center' : 'center center',
+        backgroundSize: isMobile ? 'contain' : 'cover',
+        backgroundPosition: 'top center',
         backgroundRepeat: 'no-repeat',
         zIndex: 0,
       }} />
