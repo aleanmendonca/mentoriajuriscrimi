@@ -575,8 +575,8 @@ function Hero() {
         right: 0,
         bottom: 0,
         backgroundImage: isMobile ? 'url(/heromobile.jpg)' : 'url(/hero.jpg)',
-        backgroundSize: isMobile ? '100% 100%' : 'cover',
-        backgroundPosition: 'top center',
+        backgroundSize: 'cover',
+        backgroundPosition: isMobile ? 'top center' : 'center center',
         backgroundRepeat: 'no-repeat',
         zIndex: 0,
       }} />
@@ -588,7 +588,7 @@ function Hero() {
         right: 0,
         bottom: 0,
         background: isMobile
-          ? 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 20%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0) 60%)'
+          ? 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.95) 70%, rgba(0,0,0,1) 100%)'
           : 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0) 100%)',
         zIndex: 1,
       }} />
