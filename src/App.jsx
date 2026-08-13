@@ -563,7 +563,7 @@ function Hero() {
     <section style={{
       ...styles.hero,
       paddingTop: isMobile ? '0' : '700px',
-      paddingBottom: isMobile ? '40px' : '100px',
+      paddingBottom: isMobile ? '60px' : '100px',
       paddingLeft: isMobile ? '0' : '30px',
       paddingRight: isMobile ? '0' : '30px',
     }}>
@@ -580,7 +580,7 @@ function Hero() {
         backgroundRepeat: 'no-repeat',
         zIndex: 0,
       }} />
-      {/* Overlay com gradiente de baixo para cima - mais forte no mobile */}
+      {/* Overlay com gradiente de baixo para cima */}
       <div style={{
         position: 'absolute',
         top: 0,
@@ -588,13 +588,13 @@ function Hero() {
         right: 0,
         bottom: 0,
         background: isMobile
-          ? 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 25%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%)'
+          ? 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 20%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0) 60%)'
           : 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0) 100%)',
         zIndex: 1,
       }} />
       <div style={{
         ...styles.heroContent,
-        paddingTop: isMobile ? '20vh' : '0',
+        paddingTop: isMobile ? '45vh' : '0',
         paddingLeft: isMobile ? '20px' : '0',
         paddingRight: isMobile ? '20px' : '0',
       }}>
