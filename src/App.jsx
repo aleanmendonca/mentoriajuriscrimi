@@ -604,10 +604,10 @@ function Hero() {
           ...styles.heroH1,
           fontSize: isMobile ? '24px' : 'clamp(28px, 4vw, 48px)',
         }}>
-          Formando <span style={{ color: '#DC2626' }}>Criminalistas</span> que Não Pedem Espaço. <span style={{ color: '#DC2626' }}>Ocupa</span>m.
+          Formando <span style={{ color: '#DC2626' }}>criminalistas</span> que não pedem espaço. <span style={{ color: '#DC2626' }}>Ocupam.</span>
         </h1>
 
-        <p style={{...styles.heroSubtitle, fontSize: isMobile ? '16px' : '18px'}}>Dois dias. Seis criminalistas. Um método.</p>
+        <p style={{...styles.heroSubtitle, fontSize: isMobile ? '16px' : '18px'}}>Dois dias. Sete criminalistas. Um método.</p>
 
         <p style={{...styles.heroSubtitle, fontSize: isMobile ? '14px' : '18px'}}>
           Aprenda diretamente com advogados que atuam em casos reais e volte para o escritório com estratégias prontas para aplicar.
@@ -690,7 +690,7 @@ function About() {
           </p>
 
           <p style={{ color: '#ACACAC', fontSize: isMobile ? '15px' : '18px', lineHeight: 1.8, marginBottom: '20px', textAlign: 'center' }}>
-            São dois dias de treinamento intensivo, das 9h às 19h, com seis dos mais experientes criminalistas do Brasil, transmitindo exatamente como atuam diante dos casos mais complexos da prática forense.
+            São dois dias de treinamento intensivo, das 9h às 19h, com sete dos mais experientes criminalistas do Brasil, transmitindo exatamente como atuam diante dos casos mais complexos da prática forense.
           </p>
 
           <div style={{ background: 'linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, transparent 100%)', borderLeft: '4px solid #DC2626', padding: isMobile ? '20px' : '30px 40px', margin: isMobile ? '30px 0' : '50px 0', borderRadius: '0 20px 20px 0' }}>
@@ -721,7 +721,8 @@ function Topics() {
     { icon: '⚠️', title: 'Crimes Sexuais', desc: 'Atuação em casos de alta sensibilidade.' },
     { icon: '💣', title: 'Grandes Operações', desc: 'Como atuar quando o cliente está no centro.' },
     { icon: '💰', title: 'Lavagem de Capitais', desc: 'Fundamentos e estratégias de defesa.' },
-    { icon: '🎭', title: 'Tribunal do Júri', desc: 'A arte da persuasão no tribunal.' },
+    { icon: '🤖', title: 'IA aliada a Defesa', desc: 'Como usar inteligência artificial como ferramenta estratégica.' },
+    { icon: '🎤', title: 'Sustentação Oral', desc: 'A arte de defender argumentos com clareza e convencimento.' },
   ]
 
   return (
@@ -867,6 +868,25 @@ function Professors() {
     scrollRef.current.scrollLeft = scrollLeft - walk
   }
 
+  // Touch handlers para mobile
+  const handleTouchStart = (e) => {
+    if (!scrollRef.current) return
+    setIsDragging(true)
+    setStartX(e.touches[0].pageX - scrollRef.current.offsetLeft)
+    setScrollLeft(scrollRef.current.scrollLeft)
+  }
+
+  const handleTouchMove = (e) => {
+    if (!isDragging || !scrollRef.current) return
+    const x = e.touches[0].pageX - scrollRef.current.offsetLeft
+    const walk = (x - startX) * 1.5
+    scrollRef.current.scrollLeft = scrollLeft - walk
+  }
+
+  const handleTouchEnd = () => {
+    setIsDragging(false)
+  }
+
   const professors = [
     {
       initials: 'VP',
@@ -882,14 +902,6 @@ function Professors() {
       role: 'Criminalista',
       desc: 'Advogado criminalista com ampla experiência na advocacia criminal.',
       image: '/palestrantes/Sérgio.png',
-      video: false,
-    },
-    {
-      initials: 'JR',
-      name: 'João Ricardo',
-      role: 'Criminalista',
-      desc: 'Advogado criminalista com atuação em casos de alta complexidade.',
-      image: '/palestrantes/João.png',
       video: false,
     },
     {
@@ -978,6 +990,9 @@ function Professors() {
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
             onMouseMove={handleMouseMove}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
             style={{
               display: 'flex',
               gap: isMobile ? '15px' : '25px',
@@ -989,7 +1004,8 @@ function Professors() {
               cursor: 'grab',
               userSelect: 'none',
               WebkitUserSelect: 'none',
-              touchAction: 'pan-y',
+              touchAction: 'pan-x',
+              WebkitOverflowScrolling: 'touch',
             }}
           >
             {professors.map((p, i) => (
@@ -1028,6 +1044,7 @@ function Professors() {
                   <img
                     src={p.image}
                     alt={p.name}
+                    draggable={false}
                     style={{
                       position: 'absolute',
                       top: 0,
@@ -1035,6 +1052,9 @@ function Professors() {
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
+                      pointerEvents: 'none',
+                      userSelect: 'none',
+                      WebkitUserDrag: 'none',
                     }}
                     onError={(e) => e.target.style.display = 'none'}
                   />
@@ -1119,14 +1139,24 @@ function Professors() {
 // Schedule Section
 function Schedule() {
   const isMobile = useIsMobile()
-  const schedule = [
-    { time: '09h00', desc: 'Abertura e Welcome Kit', bold: false },
-    { time: '09h30', desc: 'Aula — Professor do dia', bold: true },
-    { time: '12h00', desc: 'Almoço', bold: false },
-    { time: '13h30', desc: 'Aula — Viviane Pinheiro', bold: true },
-    { time: '16h00', desc: 'Coffee Break', bold: false },
-    { time: '16h30', desc: 'Aula — Professor do dia', bold: true },
-    { time: '19h00', desc: 'Encerramento + Sorteio de Livros', bold: false },
+
+  const sextaFeira = [
+    { time: '09h00 às 11h00', desc: 'Viviane Pinheiro', bold: true },
+    { time: '11h00 às 12h30', desc: 'Marlon Ricardo', bold: true },
+    { time: '12h30 às 13h30', desc: 'INTERVALO PARA ALMOÇO', bold: false },
+    { time: '13h30 às 16h00', desc: 'Welbert Freitas', bold: true },
+    { time: '16h00 às 16h30', desc: 'COFFEE BREAK', bold: false },
+    { time: '16h30 às 19h00', desc: 'Leandro Morales', bold: true },
+  ]
+
+  const sabado = [
+    { time: '09h00 às 10h30', desc: 'Viviane Pinheiro', bold: true },
+    { time: '10h30 às 12h30', desc: 'David Alencar', bold: true },
+    { time: '12h30 às 13h30', desc: 'INTERVALO PARA ALMOÇO', bold: false },
+    { time: '13h30 às 16h00', desc: 'Sérgio Figueiredo', bold: true },
+    { time: '16h00 às 16h30', desc: 'COFFEE BREAK', bold: false },
+    { time: '16h30 às 19h00', desc: 'Jader Aldrin', bold: true },
+    { time: '19h00', desc: 'Sorteio da BECA e Vade Mecuns, Encerramento', bold: false },
   ]
 
   return (
@@ -1149,42 +1179,71 @@ function Schedule() {
             Cada dia começa às 9h e vai até às 19h. Três professores por dia.
           </p>
 
-          {[
-            { day: 'Dia 1', date: '21 de Agosto de 2026' },
-            { day: 'Dia 2', date: '22 de Agosto de 2026' }
-          ].map((item, dayIndex) => (
-            <div key={dayIndex} style={{ ...styles.scheduleDay, padding: isMobile ? '25px' : '40px', textAlign: 'center' }}>
-              <h3 style={{
-                fontSize: isMobile ? '20px' : '24px',
-                textTransform: 'uppercase',
-                background: 'linear-gradient(90deg, #FFD700, #FFA500)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                fontWeight: 700,
-                marginBottom: '5px',
-                textAlign: 'center'
-              }}>{item.day}</h3>
-              <p style={{
-                fontSize: isMobile ? '14px' : '16px',
-                background: 'linear-gradient(90deg, #FFD700, #FFA500)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                fontWeight: 400,
-                marginBottom: '25px',
-                textAlign: 'center'
-              }}>{item.date}</p>
-              {schedule.map((item, i) => (
-                <div key={i} style={{ ...styles.scheduleItem, padding: isMobile ? '12px 0' : '18px 0', borderBottom: i === schedule.length - 1 ? 'none' : '1px solid rgba(255, 255, 255, 0.05)' }}>
-                  <span style={{ color: '#DC2626', fontWeight: 600, fontSize: isMobile ? '13px' : '15px', minWidth: '60px' }}>{item.time}</span>
-                  <span style={{ color: '#ACACAC', fontSize: isMobile ? '13px' : '15px' }}>
-                    {item.bold ? <strong style={{ color: 'white' }}>{item.desc}</strong> : item.desc}
-                  </span>
-                </div>
-              ))}
-            </div>
-          ))}
+          {/* Sexta-Feira */}
+          <div style={{ ...styles.scheduleDay, padding: isMobile ? '25px' : '40px', textAlign: 'center', marginBottom: '30px' }}>
+            <h3 style={{
+              fontSize: isMobile ? '20px' : '24px',
+              textTransform: 'uppercase',
+              background: 'linear-gradient(90deg, #FFD700, #FFA500)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              fontWeight: 700,
+              marginBottom: '5px',
+              textAlign: 'center'
+            }}>Sexta-Feira</h3>
+            <p style={{
+              fontSize: isMobile ? '14px' : '16px',
+              background: 'linear-gradient(90deg, #FFD700, #FFA500)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              fontWeight: 400,
+              marginBottom: '25px',
+              textAlign: 'center'
+            }}>21 de Agosto de 2026</p>
+            {sextaFeira.map((item, i) => (
+              <div key={i} style={{ ...styles.scheduleItem, padding: isMobile ? '12px 0' : '18px 0', borderBottom: i === sextaFeira.length - 1 ? 'none' : '1px solid rgba(255, 255, 255, 0.05)' }}>
+                <span style={{ color: '#DC2626', fontWeight: 600, fontSize: isMobile ? '13px' : '15px', minWidth: isMobile ? '90px' : '110px' }}>{item.time}</span>
+                <span style={{ color: '#ACACAC', fontSize: isMobile ? '13px' : '15px' }}>
+                  {item.bold ? <strong style={{ color: 'white' }}>{item.desc}</strong> : item.desc}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Sábado */}
+          <div style={{ ...styles.scheduleDay, padding: isMobile ? '25px' : '40px', textAlign: 'center' }}>
+            <h3 style={{
+              fontSize: isMobile ? '20px' : '24px',
+              textTransform: 'uppercase',
+              background: 'linear-gradient(90deg, #FFD700, #FFA500)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              fontWeight: 700,
+              marginBottom: '5px',
+              textAlign: 'center'
+            }}>Sábado</h3>
+            <p style={{
+              fontSize: isMobile ? '14px' : '16px',
+              background: 'linear-gradient(90deg, #FFD700, #FFA500)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              fontWeight: 400,
+              marginBottom: '25px',
+              textAlign: 'center'
+            }}>22 de Agosto de 2026</p>
+            {sabado.map((item, i) => (
+              <div key={i} style={{ ...styles.scheduleItem, padding: isMobile ? '12px 0' : '18px 0', borderBottom: i === sabado.length - 1 ? 'none' : '1px solid rgba(255, 255, 255, 0.05)' }}>
+                <span style={{ color: '#DC2626', fontWeight: 600, fontSize: isMobile ? '13px' : '15px', minWidth: isMobile ? '90px' : '110px' }}>{item.time}</span>
+                <span style={{ color: '#ACACAC', fontSize: isMobile ? '13px' : '15px' }}>
+                  {item.bold ? <strong style={{ color: 'white' }}>{item.desc}</strong> : item.desc}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -1268,50 +1327,49 @@ function Pricing() {
                 color: 'white',
                 lineHeight: 1,
                 textShadow: '0 2px 10px rgba(0,0,0,0.3)',
-              }}>-40%</div>
+              }}>40% OFF</div>
               <div style={{
                 fontSize: isMobile ? '12px' : '16px',
                 color: 'rgba(255,255,255,0.9)',
                 marginTop: '5px',
                 fontWeight: 600,
-              }}>DESCONTO EXCLUSIVO</div>
+              }}>APLIQUE O CUPOM <span style={{ color: '#FFD700' }}>JURISCRIMI40</span> PARA TER O DESCONTO</div>
             </div>
 
-            {/* Preço Antigo */}
+            {/* Preço Original */}
             <div style={{ marginBottom: '5px' }}>
-              <span style={{ color: '#ACACAC', fontSize: isMobile ? '18px' : '22px', textDecoration: 'line-through' }}>De R$ 1.499</span>
+              <span style={{ color: '#ACACAC', fontSize: isMobile ? '18px' : '22px', textDecoration: 'line-through' }}>De R$ 1.499,99</span>
+            </div>
+            <div style={{ marginBottom: isMobile ? '15px' : '20px' }}>
+              <span style={{ color: '#ACACAC', fontSize: isMobile ? '13px' : '15px' }}>ou 12x de R$ 154,22</span>
             </div>
 
-            {/* Badge Economia */}
+            {/* Tarja Preço com Desconto */}
             <div style={{
-              display: 'inline-block',
-              background: 'rgba(34, 197, 94, 0.2)',
-              border: '1px solid #22C55E',
-              borderRadius: '8px',
-              padding: isMobile ? '6px 12px' : '8px 16px',
-              marginBottom: isMobile ? '15px' : '20px',
-            }}>
-              <span style={{ fontSize: isMobile ? '12px' : '14px', color: '#22C55E', fontWeight: 700 }}>
-                🔥 ECONOMIA DE R$ 600
-              </span>
-            </div>
-
-            {/* Preço Novo */}
-            <div style={{ marginBottom: '5px' }}>
-              <span style={{ fontSize: isMobile ? '42px' : '56px', fontWeight: 800, color: '#22C55E' }}>R$ 897</span>
-            </div>
-
-            {/* Parcelamento */}
-            <div style={{
-              background: 'rgba(255,255,255,0.05)',
-              borderRadius: '10px',
-              padding: isMobile ? '10px 15px' : '12px 20px',
+              background: 'rgba(34, 197, 94, 0.15)',
+              border: '2px solid #22C55E',
+              borderRadius: '15px',
+              padding: isMobile ? '15px 20px' : '20px 30px',
               marginBottom: isMobile ? '20px' : '30px',
-              display: 'inline-block',
+              textAlign: 'center',
             }}>
-              <span style={{ color: '#FFD700', fontSize: isMobile ? '15px' : '18px', fontWeight: 600 }}>
-                ou 12x de <strong>R$ 92,53</strong>
-              </span>
+              <div style={{
+                fontSize: isMobile ? '14px' : '16px',
+                color: '#22C55E',
+                fontWeight: 600,
+                marginBottom: '5px',
+              }}>COM O CUPOM VOCÊ PAGARÁ:</div>
+              <div style={{
+                fontSize: isMobile ? '38px' : '52px',
+                fontWeight: 800,
+                color: '#22C55E',
+                lineHeight: 1,
+              }}>R$ 899,99</div>
+              <div style={{
+                fontSize: isMobile ? '14px' : '16px',
+                color: 'rgba(255,255,255,0.7)',
+                marginTop: '5px',
+              }}>ou 12x de <strong style={{ color: '#22C55E' }}>R$ 92,53</strong></div>
             </div>
 
             <ul style={{ listStyle: 'none', marginBottom: isMobile ? '20px' : '30px', textAlign: 'left' }}>
@@ -1347,7 +1405,7 @@ function Pricing() {
 
             <button
               style={{ ...styles.btn, ...styles.btnPrimary, width: '100%', padding: isMobile ? '15px' : '18px', fontSize: isMobile ? '16px' : '20px' }}
-              onClick={() => window.open('https://payfast.greenn.com.br/177339?batch=15130_LdMxxN', '_blank')}
+              onClick={() => window.open('https://payfast.greenn.com.br/pre-checkout/a873tx5', '_blank')}
             >
               Garantir Minha Vaga
             </button>
