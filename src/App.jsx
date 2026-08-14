@@ -590,13 +590,13 @@ function Hero() {
         right: 0,
         bottom: 0,
         background: isMobile
-          ? 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.7) 55%, rgba(0,0,0,0.95) 65%)'
+          ? 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0.7) 45%, rgba(0,0,0,0.95) 60%)'
           : 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0) 100%)',
         zIndex: 1,
       }} />
       <div style={{
         ...styles.heroContent,
-        paddingTop: isMobile ? '28vh' : '700px',
+        paddingTop: isMobile ? '20vh' : '700px',
         paddingLeft: isMobile ? '20px' : '0',
         paddingRight: isMobile ? '20px' : '0',
       }}>
@@ -613,7 +613,7 @@ function Hero() {
           Aprenda diretamente com advogados que atuam em casos reais e volte para o escritório com estratégias prontas para aplicar.
         </p>
 
-        <ButtonShiny onClick={() => window.open('https://payfast.greenn.com.br/177339?batch=15130_LdMxxN', '_blank')} style={{ fontSize: isMobile ? '16px' : '20px', padding: isMobile ? '15px 25px' : '1.25rem 2.5rem' }}>
+        <ButtonShiny onClick={() => window.open('https://payfast.greenn.com.br/pre-checkout/a873tx5', '_blank')} style={{ fontSize: isMobile ? '16px' : '20px', padding: isMobile ? '15px 25px' : '1.25rem 2.5rem' }}>
           Garantir Minha Vaga
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -995,17 +995,18 @@ function Professors() {
             onTouchEnd={handleTouchEnd}
             style={{
               display: 'flex',
-              gap: isMobile ? '15px' : '25px',
+              gap: isMobile ? '12px' : '20px',
               overflowX: 'auto',
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
               padding: isMobile ? '5px 15px' : '10px 20px',
-              scrollSnapType: 'x mandatory',
               cursor: 'grab',
               userSelect: 'none',
               WebkitUserSelect: 'none',
-              touchAction: 'pan-x',
+              touchAction: 'pan-x pan-y',
               WebkitOverflowScrolling: 'touch',
+              scrollBehavior: 'smooth',
+              overscrollBehaviorX: 'contain',
             }}
           >
             {professors.map((p, i) => (
@@ -1016,21 +1017,9 @@ function Professors() {
                   border: '1px solid rgba(255, 255, 255, 0.05)',
                   borderRadius: '20px',
                   overflow: 'hidden',
-                  transition: 'all 0.4s ease',
                   cursor: 'pointer',
                   flexShrink: 0,
-                  width: isMobile ? '260px' : '300px',
-                  scrollSnapAlign: 'start',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-10px)'
-                  e.currentTarget.style.borderColor = '#DC2626'
-                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(220, 38, 38, 0.2)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)'
-                  e.currentTarget.style.boxShadow = 'none'
+                  width: isMobile ? '200px' : '280px',
                 }}
               >
                 {/* Imagem / Vídeo no topo */}
