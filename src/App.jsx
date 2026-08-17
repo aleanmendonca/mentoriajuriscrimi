@@ -1014,7 +1014,7 @@ function Professors() {
               <div style={{
                 position: 'relative',
                 width: isMobile ? '100%' : '350px',
-                paddingTop: isMobile ? '80%' : 'auto',
+                paddingTop: isMobile ? '75%' : 'auto',
                 minHeight: isMobile ? '0' : '280px',
                 background: '#1a1a1a',
                 overflow: 'hidden',
@@ -1029,6 +1029,7 @@ function Professors() {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
+                    objectPosition: 'center top',
                     pointerEvents: 'none',
                   }}
                 />
@@ -1075,7 +1076,7 @@ function Professors() {
               <div style={{
                 position: 'relative',
                 width: '100%',
-                paddingTop: '120%',
+                paddingTop: isMobile ? '100%' : '120%',
                 background: '#1a1a1a',
                 overflow: 'hidden',
               }}>
@@ -1089,6 +1090,7 @@ function Professors() {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
+                    objectPosition: 'center top',
                     pointerEvents: 'none',
                   }}
                 />
