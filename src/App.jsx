@@ -1517,12 +1517,12 @@ function FAQ() {
 
   const faqs = [
     { q: 'Quem pode participar?', a: 'Advogados e advogadas com interesse em atualizações, estratégias e técnica na prática criminal real.' },
-    { q: 'Qual o valor da mentoria?', a: 'R$ 897 à vista ou 12x de R$ 92,53. De R$ 1.499 por R$ 897 (40% OFF).' },
+    { q: 'Qual o valor da mentoria?', a: 'R$ 897 à vista ou 12× de R$ 92,53. De R$ 1.499 por R$ 897 (40% OFF).' },
     { q: 'Posso parcelar a inscrição?', a: 'Sim, em até 12x sem juros no cartão de crédito.' },
     { q: 'O evento é presencial?', a: 'Sim. 100% presencial, no Hotel Luzeiros, em Fortaleza, nos dias 21 e 22 de agosto de 2026.' },
     { q: 'Haverá gravação das aulas?', a: 'Sim, as aulas serão gravadas, mas as gravações não serão disponibilizadas aos participantes.' },
     { q: 'As vagas são limitadas?', a: 'Sim, são apenas 55 profissionais. Quando esgotarem, não haverá lista de espera.' },
-    { q: 'O que está incluso na inscrição?', a: 'Acesso integral aos dois dias, welcome kit premium, mesa VIP, coffee break, certificado de 20h, material de apoio, grupo com professores e acompanhamento pós-evento.' },
+    { q: 'O que está incluso na inscrição?', a: 'Acesso integral aos dois dias, welcome kit premium, mesa VIP, coffee break, certificado de 20h, material de apoio, grupo com professores e sorteio de uma BECA e de VADE MECUM PENAL 2026 da Confraria Criminal.' },
   ]
 
   return (
