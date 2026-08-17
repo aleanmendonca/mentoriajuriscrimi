@@ -777,6 +777,9 @@ function Differential() {
         <div style={styles.sectionHeader}>
           <p style={styles.sectionLabel}>Diferenciais</p>
           <h2 style={styles.sectionTitle}>O Diferencial Dessa Mentoria</h2>
+          <p style={{ color: '#ACACAC', fontSize: isMobile ? '15px' : '18px', maxWidth: '700px', margin: '0 auto', lineHeight: 1.7, marginBottom: '30px' }}>
+            Você não vai apenas assistir a aulas. Vai aprender com quem vive a advocacia criminal e sair com estratégias aplicáveis já no primeiro atendimento.
+          </p>
         </div>
 
         <div style={{ ...styles.diffGrid, gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))' }}>
