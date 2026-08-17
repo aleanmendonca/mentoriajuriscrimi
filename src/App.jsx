@@ -64,10 +64,10 @@ const styles = {
     gap: '10px',
   },
   btnPrimary: {
-    background: '#DC2626',
-    border: '0.883px solid rgba(255, 159, 136, 0.5561)',
+    background: '#22C55E',
+    border: '0.883px solid rgba(34, 197, 94, 0.5561)',
     color: 'white',
-    boxShadow: '0px 0px 22.064px rgba(220, 38, 38, 0.30), 0px 0px 13.238px rgba(129, 6, 0, 1) inset',
+    boxShadow: '0px 0px 22.064px rgba(34, 197, 94, 0.30), 0px 0px 13.238px rgba(6, 129, 6, 1) inset',
   },
   btnOutline: {
     background: 'transparent',
@@ -613,12 +613,12 @@ function Hero() {
           Aprenda diretamente com advogados que atuam em casos reais e volte para o escritório com estratégias prontas para aplicar.
         </p>
 
-        <ButtonShiny onClick={() => window.open('https://payfast.greenn.com.br/pre-checkout/a873tx5', '_blank')} style={{ fontSize: isMobile ? '16px' : '20px', padding: isMobile ? '15px 25px' : '1.25rem 2.5rem' }}>
+        <button
+          onClick={() => window.open('https://payfast.greenn.com.br/pre-checkout/a873tx5', '_blank')}
+          style={{ ...styles.btn, ...styles.btnPrimary, fontSize: isMobile ? '16px' : '20px', padding: isMobile ? '15px 25px' : '18px 35px', borderRadius: '12px', marginTop: '20px' }}
+        >
           Garantir Minha Vaga
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </ButtonShiny>
+        </button>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: isMobile ? '15px' : '30px', flexWrap: 'wrap', marginTop: isMobile ? '25px' : '40px' }}>
           <MetaItem icon="📅" text="21 e 22 de Agosto de 2026" />
@@ -803,6 +803,15 @@ function Differential() {
             </div>
           ))}
         </div>
+
+        <div style={{ textAlign: 'center', marginTop: '40px' }}>
+          <button
+            onClick={() => window.open('https://payfast.greenn.com.br/pre-checkout/a873tx5', '_blank')}
+            style={{ ...styles.btn, ...styles.btnPrimary, fontSize: isMobile ? '16px' : '18px', padding: isMobile ? '15px 30px' : '18px 40px', borderRadius: '12px' }}
+          >
+            Garantir Minha Vaga
+          </button>
+        </div>
       </div>
     </section>
   )
@@ -837,6 +846,15 @@ function ForWho() {
               </p>
             </div>
           ))}
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: '40px' }}>
+          <button
+            onClick={() => window.open('https://payfast.greenn.com.br/pre-checkout/a873tx5', '_blank')}
+            style={{ ...styles.btn, ...styles.btnPrimary, fontSize: isMobile ? '16px' : '18px', padding: isMobile ? '15px 30px' : '18px 40px', borderRadius: '12px' }}
+          >
+            Garantir Minha Vaga
+          </button>
         </div>
       </div>
     </section>
@@ -1095,6 +1113,15 @@ function Professors() {
           ))}
         </div>
 
+        <div style={{ textAlign: 'center', marginTop: '40px' }}>
+          <button
+            onClick={() => window.open('https://payfast.greenn.com.br/pre-checkout/a873tx5', '_blank')}
+            style={{ ...styles.btn, ...styles.btnPrimary, fontSize: isMobile ? '16px' : '18px', padding: isMobile ? '15px 30px' : '18px 40px', borderRadius: '12px' }}
+          >
+            Garantir Minha Vaga
+          </button>
+        </div>
+
         {/* Esconder scrollbar CSS */}
         <style>{`
           div::-webkit-scrollbar { display: none; }
@@ -1213,6 +1240,15 @@ function Schedule() {
             ))}
           </div>
         </div>
+
+        <div style={{ textAlign: 'center', marginTop: '40px' }}>
+          <button
+            onClick={() => window.open('https://payfast.greenn.com.br/pre-checkout/a873tx5', '_blank')}
+            style={{ ...styles.btn, ...styles.btnPrimary, fontSize: isMobile ? '16px' : '18px', padding: isMobile ? '15px 30px' : '18px 40px', borderRadius: '12px' }}
+          >
+            Garantir Minha Vaga
+          </button>
+        </div>
       </div>
     </section>
   )
@@ -1264,6 +1300,15 @@ function Testimonials() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: '40px' }}>
+          <button
+            onClick={() => window.open('https://payfast.greenn.com.br/pre-checkout/a873tx5', '_blank')}
+            style={{ ...styles.btn, ...styles.btnPrimary, fontSize: isMobile ? '16px' : '18px', padding: isMobile ? '15px 30px' : '18px 40px', borderRadius: '12px' }}
+          >
+            Garantir Minha Vaga
+          </button>
         </div>
       </div>
     </section>
