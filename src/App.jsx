@@ -941,6 +941,14 @@ function Professors() {
       image: '/palestrantes/JADER.png',
       video: false,
     },
+    {
+      initials: 'DA',
+      name: 'David Alencar',
+      role: 'Criminalista',
+      desc: 'Advogado criminalista com ampla experiência em casos de alta complexidade.',
+      image: '/palestrantes/David.png',
+      video: false,
+    },
   ]
 
   const scroll = (direction) => {
@@ -955,10 +963,67 @@ function Professors() {
       <div style={styles.container}>
         <div style={styles.sectionHeader}>
           <p style={styles.sectionLabel}>Nossos Professores</p>
-          <h2 style={styles.sectionTitle}>Sete Criminalistas. Uma Metodologia.</h2>
+          <h2 style={styles.sectionTitle}>Oito Criminalistas. Uma Metodologia.</h2>
         </div>
 
-        {/* Grid de Professores */}
+        {/* Card da Viviane em destaque */}
+        <div style={{
+          maxWidth: isMobile ? '100%' : '600px',
+          margin: '0 auto 30px auto',
+        }}>
+          <div
+            style={{
+              background: 'rgba(255, 255, 255, 0.02)',
+              border: '2px solid #DC2626',
+              borderRadius: '20px',
+              overflow: 'hidden',
+              cursor: 'pointer',
+              boxShadow: '0 10px 40px rgba(220, 38, 38, 0.15)',
+            }}
+          >
+            <div style={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+            }}>
+              <div style={{
+                position: 'relative',
+                width: isMobile ? '100%' : '250px',
+                paddingTop: isMobile ? '80%' : 'auto',
+                minHeight: isMobile ? '0' : '200px',
+                background: '#1a1a1a',
+                overflow: 'hidden',
+              }}>
+                <img
+                  src={professors[0].image}
+                  alt={professors[0].name}
+                  style={{
+                    position: isMobile ? 'absolute' : 'static',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    pointerEvents: 'none',
+                  }}
+                />
+              </div>
+              <div style={{ padding: '25px', flex: 1 }}>
+                <h3 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '8px' }}>{professors[0].name}</h3>
+                <p style={{
+                  fontSize: '14px',
+                  color: '#DC2626',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  marginBottom: '12px',
+                }}>{professors[0].role}</p>
+                <p style={{ color: '#ACACAC', fontSize: '14px', lineHeight: 1.6 }}>{professors[0].desc}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Grid dos outros Professores */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
@@ -966,7 +1031,7 @@ function Professors() {
           maxWidth: '900px',
           margin: '0 auto',
         }}>
-          {professors.map((p, i) => (
+          {professors.slice(1).map((p, i) => (
             <div
               key={i}
               style={{
@@ -977,18 +1042,17 @@ function Professors() {
                 cursor: 'pointer',
               }}
             >
-              {/* Imagem / Vídeo no topo */}
+              {/* Imagem no topo */}
               <div style={{
                 position: 'relative',
                 width: '100%',
-                paddingTop: '100%',
+                paddingTop: '80%',
                 background: '#1a1a1a',
                 overflow: 'hidden',
               }}>
                 <img
                   src={p.image}
                   alt={p.name}
-                  draggable={false}
                   style={{
                     position: 'absolute',
                     top: 0,
@@ -997,46 +1061,21 @@ function Professors() {
                     height: '100%',
                     objectFit: 'cover',
                     pointerEvents: 'none',
-                    userSelect: 'none',
-                    WebkitUserDrag: 'none',
                   }}
-                  onError={(e) => e.target.style.display = 'none'}
                 />
-                {/* Play button (se for vídeo) */}
-                {p.video && (
-                  <div style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: '60px',
-                    height: '60px',
-                    background: '#DC2626',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                  }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
-                  </div>
-                )}
               </div>
-
               {/* Texto embaixo */}
-              <div style={{ padding: isMobile ? '15px 18px' : '20px 25px' }}>
-                <h3 style={{ fontSize: isMobile ? '17px' : '20px', fontWeight: 700, marginBottom: '6px' }}>{p.name}</h3>
+              <div style={{ padding: '15px 18px' }}>
+                <h3 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '4px' }}>{p.name}</h3>
                 <p style={{
-                  fontSize: '12px',
+                  fontSize: '11px',
                   color: '#DC2626',
                   fontWeight: 600,
                   textTransform: 'uppercase',
                   letterSpacing: '1px',
-                  marginBottom: '10px',
+                  marginBottom: '8px',
                 }}>{p.role}</p>
-                <p style={{ color: '#ACACAC', fontSize: '12px', lineHeight: 1.5 }}>{p.desc}</p>
+                <p style={{ color: '#ACACAC', fontSize: '12px', lineHeight: 1.4 }}>{p.desc}</p>
               </div>
             </div>
           ))}
