@@ -1264,9 +1264,9 @@ function Testimonials() {
   const videoRefs = useRef({})
 
   const testimonials = [
-    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4480.MP4' },
-    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4481.MP4' },
-    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4482.MP4' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4480.MP4', name: 'Advogada Rayelle Alburquerque' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4481.MP4', name: 'Advogada Roberta Studart' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4482.MP4', name: 'Advogado Luciano Dantas' },
   ]
 
   // Gerar thumbnails após carregamento
@@ -1304,40 +1304,49 @@ function Testimonials() {
           {testimonials.map((t, i) => (
             <div key={i}>
               {playingVideo === i ? (
-                <video
-                  controls
-                  autoPlay
-                  style={{ width: '100%', aspectRatio: '9/16', borderRadius: '12px', background: '#1a1a1a', objectFit: 'cover' }}
-                  src={t.video}
-                  poster={t.poster}
-                  onEnded={() => setPlayingVideo(null)}
-                />
+                <div>
+                  <video
+                    controls
+                    autoPlay
+                    style={{ width: '100%', aspectRatio: '9/16', borderRadius: '12px 12px 0 0', background: '#1a1a1a', objectFit: 'cover' }}
+                    src={t.video}
+                    onEnded={() => setPlayingVideo(null)}
+                  />
+                  <div style={{ background: '#1a1a1a', padding: '12px 15px', borderRadius: '0 0 12px 12px', textAlign: 'center' }}>
+                    <p style={{ color: '#DC2626', fontSize: '13px', fontWeight: 600 }}>{t.name}</p>
+                  </div>
+                </div>
               ) : (
-                <div
-                  onClick={() => setPlayingVideo(i)}
-                  style={{ width: '100%', aspectRatio: '9/16', background: thumbnails[i] ? `url('${thumbnails[i]}') center/cover` : `linear-gradient(135deg, #1a1a1a, #2a2a2a)`, borderRadius: '12px', position: 'relative', cursor: 'pointer', overflow: 'hidden' }}
-                >
-                  {!thumbnails[i] && (
-                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: '#DC2626' }}>
-                      <div style={{ width: '30px', height: '30px', border: '3px solid #DC2626', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+                <div>
+                  <div
+                    onClick={() => setPlayingVideo(i)}
+                    style={{ width: '100%', aspectRatio: '9/16', background: thumbnails[i] ? `url('${thumbnails[i]}') center/cover` : `linear-gradient(135deg, #1a1a1a, #2a2a2a)`, borderRadius: '12px 12px 0 0', position: 'relative', cursor: 'pointer', overflow: 'hidden' }}
+                  >
+                    {!thumbnails[i] && (
+                      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: '#DC2626' }}>
+                        <div style={{ width: '30px', height: '30px', border: '3px solid #DC2626', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+                      </div>
+                    )}
+                    <div style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      width: '60px',
+                      height: '60px',
+                      background: 'rgba(220, 38, 38, 0.9)',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="white" style={{ marginLeft: '4px' }}>
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
                     </div>
-                  )}
-                  <div style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: '60px',
-                    height: '60px',
-                    background: 'rgba(220, 38, 38, 0.9)',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white" style={{ marginLeft: '4px' }}>
-                      <path d="M8 5v14l11-7z"/>
-                    </svg>
+                  </div>
+                  <div style={{ background: '#1a1a1a', padding: '12px 15px', borderRadius: '0 0 12px 12px', textAlign: 'center' }}>
+                    <p style={{ color: '#DC2626', fontSize: '13px', fontWeight: 600 }}>{t.name}</p>
                   </div>
                 </div>
               )}
