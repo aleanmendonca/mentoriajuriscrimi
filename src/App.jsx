@@ -1014,8 +1014,7 @@ function Professors() {
               <div style={{
                 position: 'relative',
                 width: isMobile ? '100%' : '350px',
-                paddingTop: isMobile ? '75%' : 'auto',
-                minHeight: isMobile ? '0' : '280px',
+                paddingTop: isMobile ? '125%' : '280px',
                 background: '#1a1a1a',
                 overflow: 'hidden',
               }}>
@@ -1023,13 +1022,13 @@ function Professors() {
                   src={professors[0].image}
                   alt={professors[0].name}
                   style={{
-                    position: isMobile ? 'absolute' : 'static',
-                    top: 0,
-                    left: 0,
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    objectPosition: 'center top',
                     pointerEvents: 'none',
                   }}
                 />
@@ -1076,7 +1075,7 @@ function Professors() {
               <div style={{
                 position: 'relative',
                 width: '100%',
-                paddingTop: isMobile ? '100%' : '120%',
+                paddingTop: '125%', // Instagram 4:5 ratio
                 background: '#1a1a1a',
                 overflow: 'hidden',
               }}>
@@ -1085,12 +1084,12 @@ function Professors() {
                   alt={p.name}
                   style={{
                     position: 'absolute',
-                    top: 0,
-                    left: 0,
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
-                    objectPosition: 'center top',
                     pointerEvents: 'none',
                   }}
                 />
