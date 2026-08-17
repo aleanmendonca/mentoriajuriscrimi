@@ -961,9 +961,9 @@ function Professors() {
         {/* Grid de Professores */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
           gap: '20px',
-          maxWidth: '1000px',
+          maxWidth: '900px',
           margin: '0 auto',
         }}>
           {professors.map((p, i) => (
