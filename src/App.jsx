@@ -951,7 +951,7 @@ function Professors() {
       initials: 'DA',
       name: 'David Alencar',
       role: 'Criminalista',
-      desc: 'Advogado criminalista com ampla experiência em casos de alta complexidade.',
+      desc: 'Ex acesso no tribunal de Justiça e direto da ESA no vale do Jaguaribe.',
       image: '/palestrantes/novos/david.jpeg',
       instagram: 'https://www.instagram.com/davidalencaradv/',
       video: false,
@@ -1223,9 +1223,9 @@ function Schedule() {
 function Testimonials() {
   const isMobile = useIsMobile()
   const testimonials = [
-    { text: '"A Mentoria Juriscrimi transformou completamente minha forma de atuar. Voltei para casa com estratégias que usei na segunda-feira seguinte."', initials: 'RF', name: 'Ricardo Ferreira', location: 'Advogado Criminalista — São Paulo' },
-    { text: '"Finalmente encontrei um evento que trata a advocacia criminal com a seriedade que ela merece."', initials: 'AM', name: 'Ana Maria Costa', location: 'Advogada Criminalista — Belo Horizonte' },
-    { text: '"O networking que fiz durante a mentoria me abriu portas que eu nem imaginava."', initials: 'PL', name: 'Pedro Lima', location: 'Advogado Criminalista — Recife' },
+    { video: '', initials: 'RF', name: 'Ricardo Ferreira', location: 'Advogado Criminalista — São Paulo' },
+    { video: '', initials: 'AM', name: 'Ana Maria Costa', location: 'Advogada Criminalista — Belo Horizonte' },
+    { video: '', initials: 'PL', name: 'Pedro Lima', location: 'Advogado Criminalista — Recife' },
   ]
 
   return (
@@ -1238,9 +1238,24 @@ function Testimonials() {
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(350px, 1fr))', gap: isMobile ? '20px' : '30px' }}>
           {testimonials.map((t, i) => (
-            <div key={i} style={{...styles.testiCard, padding: isMobile ? '20px' : '35px'}}>
-              <p style={{ fontSize: isMobile ? '14px' : '16px', lineHeight: 1.7, color: '#ACACAC', marginBottom: '20px', fontStyle: 'italic' }}>{t.text}</p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div key={i} style={{...styles.testiCard, padding: isMobile ? '15px' : '20px'}}>
+              {t.video ? (
+                <video
+                  controls
+                  style={{ width: '100%', borderRadius: '12px', background: '#1a1a1a' }}
+                  src={t.video}
+                />
+              ) : (
+                <div style={{ width: '100%', paddingTop: '56.25%', background: '#1a1a1a', borderRadius: '12px', position: 'relative' }}>
+                  <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: '#DC2626', fontSize: '14px', textAlign: 'center' }}>
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="#DC2626" style={{ marginBottom: '5px' }}>
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <div>Vídeo em breve</div>
+                  </div>
+                </div>
+              )}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '15px' }}>
                 <div style={{...styles.testiAvatar, width: isMobile ? '40px' : '50px', height: isMobile ? '40px' : '50px'}}>{t.initials}</div>
                 <div>
                   <h4 style={{ fontSize: isMobile ? '14px' : '16px', fontWeight: 600, marginBottom: '3px' }}>{t.name}</h4>
