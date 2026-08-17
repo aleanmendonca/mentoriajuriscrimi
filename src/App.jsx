@@ -897,7 +897,7 @@ function Professors() {
       initials: 'VP',
       name: 'Viviane Pinheiro',
       role: 'Fundadora da Juriscrimi',
-      desc: 'Atuação nacional, criadora do Método VP para advogados e Fundadora do Congresso Penal, Juriscrimi. Viviane Pinheiro, a "Leoa do Criminal", uma advogada criminalista com 25 anos de experiência que atua nos casos mais complexos, no Tribunal do Júri, Revisão Criminal e Execução Penal — e forma a próxima geração de líderes no Direito Penal.',
+      desc: 'Advogada criminalista com atuação nacional e internacional, conhecida como a "Leoa do Criminal" pela forma combativa com que soluciona casos de alta complexidade, como tribunal do júri, execução penal, revisão criminal e organização criminosa. É fundadora e CEO do Congresso Penal JurisCrimi e criadora do método VP Criminal, dedicando-se à formação de advogados criminalistas. Atuou no caso internacional Marcelo Piloto, no Júri Federal do Rio de Janeiro, um dos casos criminais mais midiáticos do país.',
       image: '/palestrantes/viviane.png',
       video: false,
     },
@@ -1322,12 +1322,6 @@ function Pricing() {
                 lineHeight: 1,
                 textShadow: '0 2px 10px rgba(0,0,0,0.3)',
               }}>40% OFF</div>
-              <div style={{
-                fontSize: isMobile ? '12px' : '16px',
-                color: 'rgba(255,255,255,0.9)',
-                marginTop: '5px',
-                fontWeight: 600,
-              }}>APLIQUE O CUPOM <span style={{ color: '#FFD700' }}>JURISCRIMI40</span> PARA TER O DESCONTO</div>
             </div>
 
             {/* Preço Original */}
@@ -1352,7 +1346,7 @@ function Pricing() {
                 color: '#22C55E',
                 fontWeight: 600,
                 marginBottom: '5px',
-              }}>COM O CUPOM VOCÊ PAGARÁ:</div>
+              }}>COM O DESCONTO VOCÊ PAGARÁ:</div>
               <div style={{
                 fontSize: isMobile ? '38px' : '52px',
                 fontWeight: 800,
