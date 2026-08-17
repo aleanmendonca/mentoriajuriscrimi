@@ -958,167 +958,88 @@ function Professors() {
           <h2 style={styles.sectionTitle}>Sete Criminalistas. Uma Metodologia.</h2>
         </div>
 
-        {/* Carrossel */}
-        <div style={{ position: 'relative' }}>
-          {/* Botão Esquerda - esconde no mobile */}
-          {!isMobile && (
-            <button
-              onClick={() => scroll('left')}
+        {/* Grid de Professores */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+          gap: '20px',
+          maxWidth: '1000px',
+          margin: '0 auto',
+        }}>
+          {professors.map((p, i) => (
+            <div
+              key={i}
               style={{
-                position: 'absolute',
-                left: '-20px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                zIndex: 10,
-                background: '#DC2626',
-                border: 'none',
-                borderRadius: '50%',
-                width: '50px',
-                height: '50px',
+                background: 'rgba(255, 255, 255, 0.02)',
+                border: '1px solid rgba(255, 255, 255, 0.05)',
+                borderRadius: '20px',
+                overflow: 'hidden',
                 cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
               }}
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                <path d="M15 18l-6-6 6-6"/>
-              </svg>
-            </button>
-          )}
-
-          {/* Cards Container - com drag/swipe */}
-          <div
-            ref={scrollRef}
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            style={{
-              display: 'flex',
-              gap: isMobile ? '12px' : '20px',
-              overflowX: 'auto',
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              padding: isMobile ? '5px 15px' : '10px 20px',
-              cursor: 'grab',
-              userSelect: 'none',
-              WebkitUserSelect: 'none',
-              touchAction: 'pan-x pan-y',
-              WebkitOverflowScrolling: 'touch',
-              scrollBehavior: 'smooth',
-              overscrollBehaviorX: 'contain',
-            }}
-          >
-            {professors.map((p, i) => (
-              <div
-                key={i}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.02)',
-                  border: '1px solid rgba(255, 255, 255, 0.05)',
-                  borderRadius: '20px',
-                  overflow: 'hidden',
-                  cursor: 'pointer',
-                  flexShrink: 0,
-                  width: isMobile ? '200px' : '280px',
-                }}
-              >
-                {/* Imagem / Vídeo no topo */}
-                <div style={{
-                  position: 'relative',
-                  width: '100%',
-                  paddingTop: isMobile ? '110%' : '120%',
-                  background: '#1a1a1a',
-                  overflow: 'hidden',
-                }}>
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    draggable={false}
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      pointerEvents: 'none',
-                      userSelect: 'none',
-                      WebkitUserDrag: 'none',
-                    }}
-                    onError={(e) => e.target.style.display = 'none'}
-                  />
-                  {/* Play button (se for vídeo) */}
-                  {p.video && (
-                    <div style={{
-                      position: 'absolute',
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)',
-                      width: '60px',
-                      height: '60px',
-                      background: '#DC2626',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: 'pointer',
-                    }}>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    </div>
-                  )}
-                </div>
-
-                {/* Texto embaixo */}
-                <div style={{ padding: isMobile ? '15px 18px' : '20px 25px' }}>
-                  <h3 style={{ fontSize: isMobile ? '17px' : '20px', fontWeight: 700, marginBottom: '6px' }}>{p.name}</h3>
-                  <p style={{
-                    fontSize: '12px',
-                    color: '#DC2626',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                    marginBottom: '10px',
-                  }}>{p.role}</p>
-                  <p style={{ color: '#ACACAC', fontSize: '12px', lineHeight: 1.5 }}>{p.desc}</p>
-                </div>
+              {/* Imagem / Vídeo no topo */}
+              <div style={{
+                position: 'relative',
+                width: '100%',
+                paddingTop: '100%',
+                background: '#1a1a1a',
+                overflow: 'hidden',
+              }}>
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  draggable={false}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    pointerEvents: 'none',
+                    userSelect: 'none',
+                    WebkitUserDrag: 'none',
+                  }}
+                  onError={(e) => e.target.style.display = 'none'}
+                />
+                {/* Play button (se for vídeo) */}
+                {p.video && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '60px',
+                    height: '60px',
+                    background: '#DC2626',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                  }}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                )}
               </div>
-            ))}
-          </div>
 
-          {/* Botão Direita - esconde no mobile */}
-          {!isMobile && (
-            <button
-              onClick={() => scroll('right')}
-              style={{
-                position: 'absolute',
-                right: '-20px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                zIndex: 10,
-                background: '#DC2626',
-                border: 'none',
-                borderRadius: '50%',
-                width: '50px',
-                height: '50px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
-              }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-                <path d="M9 18l6-6-6-6"/>
-              </svg>
-            </button>
-          )}
+              {/* Texto embaixo */}
+              <div style={{ padding: isMobile ? '15px 18px' : '20px 25px' }}>
+                <h3 style={{ fontSize: isMobile ? '17px' : '20px', fontWeight: 700, marginBottom: '6px' }}>{p.name}</h3>
+                <p style={{
+                  fontSize: '12px',
+                  color: '#DC2626',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  marginBottom: '10px',
+                }}>{p.role}</p>
+                <p style={{ color: '#ACACAC', fontSize: '12px', lineHeight: 1.5 }}>{p.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Esconder scrollbar CSS */}
