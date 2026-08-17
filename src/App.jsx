@@ -1137,12 +1137,12 @@ function Schedule() {
   const isMobile = useIsMobile()
 
   const sextaFeira = [
-    { time: '09h00 às 11h00', desc: 'Viviane Pinheiro', bold: true },
-    { time: '11h00 às 12h30', desc: 'Marlon Ricardo', bold: true },
-    { time: '12h30 às 13h30', desc: 'INTERVALO PARA ALMOÇO', bold: false },
-    { time: '13h30 às 16h00', desc: 'Welbert Freitas', bold: true },
-    { time: '16h00 às 16h30', desc: 'COFFEE BREAK', bold: false },
-    { time: '16h30 às 19h00', desc: 'Leandro Morales', bold: true },
+    { time: '08h30 às 10h30', desc: 'Viviane Pinheiro', bold: true },
+    { time: '10h30 às 13h00', desc: 'Marlon Ricardo', bold: true },
+    { time: '13h00 às 14h00', desc: 'INTERVALO PARA ALMOÇO', bold: false },
+    { time: '14h00 às 16h30', desc: 'Welbert Freitas', bold: true },
+    { time: '16h30 às 17h00', desc: 'COFFEE BREAK', bold: false },
+    { time: '17h00 às 19h30', desc: 'Leandro Morales', bold: true },
   ]
 
   const sabado = [
@@ -1152,7 +1152,8 @@ function Schedule() {
     { time: '13h30 às 16h00', desc: 'Sérgio Figueiredo', bold: true },
     { time: '16h00 às 16h30', desc: 'COFFEE BREAK', bold: false },
     { time: '16h30 às 19h00', desc: 'Jader Aldrin', bold: true },
-    { time: '19h00', desc: 'Sorteio da BECA e Vade Mecuns, Encerramento', bold: false },
+    { time: '19h00', desc: 'Sorteio da BECA e Vade Mecum Penal 2026 da Confraria Criminal', bold: false },
+    { time: '', desc: 'Encerramento', bold: false },
   ]
 
   return (
@@ -1172,7 +1173,7 @@ function Schedule() {
 
         <div style={{ maxWidth: '700px', margin: '0 auto' }}>
           <p style={{ textAlign: 'center', color: '#ACACAC', fontSize: isMobile ? '14px' : '17px', marginBottom: isMobile ? '30px' : '50px' }}>
-            Cada dia começa às 9h e vai até às 19h. Três professores por dia.
+            Sexta começa às 8h30, sábado às 9h. Três professores por dia.
           </p>
 
           {/* Sexta-Feira */}
