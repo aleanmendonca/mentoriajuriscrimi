@@ -914,7 +914,7 @@ function Professors() {
       name: 'Marlon Ricardo',
       role: 'Criminalista',
       desc: 'Autor do livro "Lavagem de Capitais: Teoria e Prática Defensiva".',
-      image: '/palestrantes/novos/leandro.jpeg',
+      image: '/palestrantes/novos/marlon.PNG',
       video: false,
     },
     {
@@ -1029,7 +1029,7 @@ function Professors() {
           display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
           gap: '20px',
-          maxWidth: '900px',
+          maxWidth: '1000px',
           margin: '0 auto',
         }}>
           {professors.slice(1).map((p, i) => (
@@ -1047,7 +1047,7 @@ function Professors() {
               <div style={{
                 position: 'relative',
                 width: '100%',
-                paddingTop: '80%',
+                paddingTop: '120%',
                 background: '#1a1a1a',
                 overflow: 'hidden',
               }}>
