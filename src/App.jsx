@@ -1313,7 +1313,7 @@ function Testimonials() {
                     onEnded={() => setPlayingVideo(null)}
                   />
                   <div style={{ background: '#1a1a1a', padding: '12px 15px', borderRadius: '0 0 12px 12px', textAlign: 'center' }}>
-                    <p style={{ color: '#DC2626', fontSize: '13px', fontWeight: 600 }}>{t.name}</p>
+                    <p style={{ color: 'white', fontSize: '14px', fontWeight: 600 }}>{t.name}</p>
                   </div>
                 </div>
               ) : (
@@ -1346,7 +1346,7 @@ function Testimonials() {
                     </div>
                   </div>
                   <div style={{ background: '#1a1a1a', padding: '12px 15px', borderRadius: '0 0 12px 12px', textAlign: 'center' }}>
-                    <p style={{ color: '#DC2626', fontSize: '13px', fontWeight: 600 }}>{t.name}</p>
+                    <p style={{ color: 'white', fontSize: '14px', fontWeight: 600 }}>{t.name}</p>
                   </div>
                 </div>
               )}
