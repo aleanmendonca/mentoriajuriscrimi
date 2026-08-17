@@ -898,7 +898,7 @@ function Professors() {
       name: 'Viviane Pinheiro',
       role: 'Fundadora da Juriscrimi',
       desc: 'Advogada criminalista com atuação nacional e internacional, conhecida como a "Leoa do Criminal" pela forma combativa com que soluciona casos de alta complexidade, como tribunal do júri, execução penal, revisão criminal e organização criminosa. É fundadora e CEO do Congresso Penal JurisCrimi e criadora do método VP Criminal, dedicando-se à formação de advogados criminalistas. Atuou no caso internacional Marcelo Piloto, no Júri Federal do Rio de Janeiro, um dos casos criminais mais midiáticos do país.',
-      image: '/palestrantes/viviane.png',
+      image: '/palestrantes/novos/viviane.jpeg',
       video: false,
     },
     {
@@ -906,7 +906,7 @@ function Professors() {
       name: 'Sérgio Figueiredo',
       role: 'Criminalista',
       desc: 'Advogado criminalista e especialista em grandes operações.',
-      image: '/palestrantes/Sérgio.png',
+      image: '/palestrantes/novos/sergio.jpeg',
       video: false,
     },
     {
@@ -914,7 +914,7 @@ function Professors() {
       name: 'Marlon Ricardo',
       role: 'Criminalista',
       desc: 'Autor do livro "Lavagem de Capitais: Teoria e Prática Defensiva".',
-      image: '/palestrantes/Marlon .png',
+      image: '/palestrantes/novos/leandro.jpeg',
       video: false,
     },
     {
@@ -922,7 +922,7 @@ function Professors() {
       name: 'Welbert Freitas',
       role: 'Mestre em Direito',
       desc: 'Mestre em Direito, advogado criminalista e professor universitário.',
-      image: '/palestrantes/wewlbert.png',
+      image: '/palestrantes/novos/welbert.jpeg',
       video: false,
     },
     {
@@ -930,7 +930,7 @@ function Professors() {
       name: 'Leandro Morales',
       role: 'Perito',
       desc: 'Leandro Morales é perito em informática e especialista em forense digital, com ampla experiência na análise técnica de provas digitais em processos judiciais, especialmente envolvendo celulares, computadores e sistemas. Atua frequentemente como assistente técnico da defesa, auxiliando advogados na compreensão técnica das evidências e na identificação de falhas metodológicas em perícias digitais.',
-      image: '/palestrantes/Leandro.png',
+      image: '/palestrantes/novos/leandro.jpeg',
       video: false,
     },
     {
@@ -938,7 +938,7 @@ function Professors() {
       name: 'Jader Aldrin',
       role: 'Criminalista',
       desc: 'Advogado criminalista e especialista em Tribunal do Júri.',
-      image: '/palestrantes/JADER.png',
+      image: '/palestrantes/novos/jader.jpeg',
       video: false,
     },
     {
@@ -946,7 +946,7 @@ function Professors() {
       name: 'David Alencar',
       role: 'Criminalista',
       desc: 'Advogado criminalista com ampla experiência em casos de alta complexidade.',
-      image: '/palestrantes/David.png',
+      image: '/palestrantes/novos/david.jpeg',
       video: false,
     },
   ]
@@ -967,8 +967,9 @@ function Professors() {
         </div>
 
         {/* Card da Viviane em destaque */}
+        {/* Card da Viviane em destaque - tamanho de 2 cards */}
         <div style={{
-          maxWidth: isMobile ? '100%' : '600px',
+          maxWidth: isMobile ? '100%' : '900px',
           margin: '0 auto 30px auto',
         }}>
           <div
@@ -987,9 +988,9 @@ function Professors() {
             }}>
               <div style={{
                 position: 'relative',
-                width: isMobile ? '100%' : '250px',
+                width: isMobile ? '100%' : '350px',
                 paddingTop: isMobile ? '80%' : 'auto',
-                minHeight: isMobile ? '0' : '200px',
+                minHeight: isMobile ? '0' : '280px',
                 background: '#1a1a1a',
                 overflow: 'hidden',
               }}>
@@ -1007,17 +1008,17 @@ function Professors() {
                   }}
                 />
               </div>
-              <div style={{ padding: '25px', flex: 1 }}>
-                <h3 style={{ fontSize: '24px', fontWeight: 700, marginBottom: '8px' }}>{professors[0].name}</h3>
+              <div style={{ padding: '30px', flex: 1 }}>
+                <h3 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '10px' }}>{professors[0].name}</h3>
                 <p style={{
                   fontSize: '14px',
                   color: '#DC2626',
                   fontWeight: 600,
                   textTransform: 'uppercase',
                   letterSpacing: '1px',
-                  marginBottom: '12px',
+                  marginBottom: '15px',
                 }}>{professors[0].role}</p>
-                <p style={{ color: '#ACACAC', fontSize: '14px', lineHeight: 1.6 }}>{professors[0].desc}</p>
+                <p style={{ color: '#ACACAC', fontSize: '15px', lineHeight: 1.7 }}>{professors[0].desc}</p>
               </div>
             </div>
           </div>
