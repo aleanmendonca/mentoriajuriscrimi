@@ -1147,13 +1147,14 @@ function Schedule() {
 
   const sabado = [
     { time: '09h00 às 10h30', desc: 'Viviane Pinheiro', bold: true },
-    { time: '10h30 às 12h30', desc: 'David Alencar', bold: true },
-    { time: '12h30 às 13h30', desc: 'INTERVALO PARA ALMOÇO', bold: false },
-    { time: '13h30 às 16h00', desc: 'Sérgio Figueiredo', bold: true },
-    { time: '16h00 às 16h30', desc: 'COFFEE BREAK', bold: false },
-    { time: '16h30 às 19h00', desc: 'Jader Aldrin', bold: true },
-    { time: '19h00', desc: 'Sorteio da BECA e Vade Mecum Penal 2026 da Confraria Criminal', bold: false },
-    { time: '', desc: 'Encerramento', bold: false },
+    { time: '9h às 11h30', desc: 'David Alencar', bold: true },
+    { time: '11h30 às 13h', desc: 'Jader Aldrin', bold: true },
+    { time: '13h às 14h', desc: 'INTERVALO PARA ALMOÇO', bold: false },
+    { time: '14h às 16h30', desc: 'Sérgio Figueiredo', bold: true },
+    { time: '16h30 às 17h', desc: 'COFFEE BREAK', bold: false },
+    { time: '17h às 19h', desc: 'Viviane Pinheiro', bold: true },
+    { time: '19h', desc: 'Sorteio da beca e Vade Mecum Penal da Confraria Criminal 2026', bold: false },
+    { time: '', desc: 'Encerramento com degustação de vinho', bold: false },
   ]
 
   return (
@@ -1285,56 +1286,27 @@ function Testimonials() {
   const videoRefs = useRef({})
 
   const testimonials = [
-    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4480.MP4', name: 'Advogada Rayelle Alburquerque' },
-    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4481.MP4', name: 'Advogada Roberta Studart' },
-    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4482.MP4', name: 'Advogado Luciano Dantas' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4480.MP4', name: 'Advogada Rayelle Alburquerque', thumb: '/thumb/VIDEO01.png' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4481.MP4', name: 'Advogada Roberta Studart', thumb: '/thumb/video02.png' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4482.MP4', name: 'Advogado Luciano Dantas', thumb: '/thumb/video03.png' },
   ]
 
-  // Gerar thumbnails após carregamento
+  // Usar thumbnails estáticos
   useEffect(() => {
-    const loadThumbnail = (t, i) => {
-      if (thumbnails[i] || thumbnailsFailed[i]) return
-
-      // Timeout de 5 segundos - marca como falhou
-      const timeout = setTimeout(() => {
-        if (!thumbnails[i]) {
+    const loadThumbnails = () => {
+      testimonials.forEach((t, i) => {
+        const img = new Image()
+        img.crossOrigin = 'anonymous'
+        img.src = t.thumb
+        img.onload = () => {
+          setThumbnails(prev => ({ ...prev, [i]: t.thumb }))
+        }
+        img.onerror = () => {
           setThumbnailsFailed(prev => ({ ...prev, [i]: true }))
         }
-      }, 5000)
-
-      const video = document.createElement('video')
-      video.crossOrigin = 'anonymous'
-      video.src = t.video
-      video.muted = true
-      video.preload = 'auto'
-      video.onloadeddata = () => {
-        video.currentTime = 0.1
-      }
-      video.onseeked = () => {
-        clearTimeout(timeout)
-        try {
-          const canvas = document.createElement('canvas')
-          canvas.width = video.videoWidth || 360
-          canvas.height = video.videoHeight || 640
-          const ctx = canvas.getContext('2d')
-          if (ctx) {
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
-            const dataUrl = canvas.toDataURL('image/jpeg', 0.8)
-            if (dataUrl && dataUrl.length > 1000) {
-              setThumbnails(prev => ({ ...prev, [i]: dataUrl }))
-            }
-          }
-        } catch (e) {
-          setThumbnailsFailed(prev => ({ ...prev, [i]: true }))
-        }
-      }
-      video.onerror = () => {
-        clearTimeout(timeout)
-        setThumbnailsFailed(prev => ({ ...prev, [i]: true }))
-      }
+      })
     }
-
-    testimonials.forEach(loadThumbnail)
+    loadThumbnails()
   }, [])
 
   return (
