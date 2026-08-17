@@ -1308,6 +1308,8 @@ function Testimonials() {
                   <video
                     controls
                     autoPlay
+                    playsInline
+                    disablePictureInPicture
                     style={{ width: '100%', aspectRatio: '9/16', borderRadius: '12px 12px 0 0', background: '#1a1a1a', objectFit: 'cover' }}
                     src={t.video}
                     onEnded={() => setPlayingVideo(null)}
@@ -1456,7 +1458,7 @@ function Pricing() {
                 'Sorteio de livros jurídicos selecionados.',
                 'Material de apoio.',
                 'Grupo de WhatsApp exclusivo.',
-                'Sorteio de uma beca sob medida.',
+                'Sorteio de uma BECA e de VADE MECUM PENAL 2026 da Confraria Criminal.',
               ].map((text, j) => (
                 <li
                   key={j}
