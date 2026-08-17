@@ -1146,7 +1146,6 @@ function Schedule() {
   ]
 
   const sabado = [
-    { time: '09h00 às 10h30', desc: 'Viviane Pinheiro', bold: true },
     { time: '9h às 11h30', desc: 'David Alencar', bold: true },
     { time: '11h30 às 13h', desc: 'Jader Aldrin', bold: true },
     { time: '13h às 14h', desc: 'INTERVALO PARA ALMOÇO', bold: false },
