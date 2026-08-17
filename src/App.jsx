@@ -1173,10 +1173,6 @@ function Schedule() {
         </div>
 
         <div style={{ maxWidth: '700px', margin: '0 auto' }}>
-          <p style={{ textAlign: 'center', color: '#ACACAC', fontSize: isMobile ? '14px' : '17px', marginBottom: isMobile ? '30px' : '50px' }}>
-            Sexta começa às 8h30, sábado às 9h. Três professores por dia.
-          </p>
-
           {/* Sexta-Feira */}
           <div style={{ ...styles.scheduleDay, padding: isMobile ? '25px' : '40px', textAlign: 'center', marginBottom: '30px' }}>
             <h3 style={{
