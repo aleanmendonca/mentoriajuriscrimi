@@ -963,7 +963,7 @@ function Professors() {
       <div style={styles.container}>
         <div style={styles.sectionHeader}>
           <p style={styles.sectionLabel}>Nossos Professores</p>
-          <h2 style={styles.sectionTitle}>Oito Criminalistas. Uma Metodologia.</h2>
+          <h2 style={styles.sectionTitle}>Sete Criminalistas. Uma Metodologia.</h2>
         </div>
 
         {/* Card da Viviane em destaque */}
