@@ -928,7 +928,7 @@ function Professors() {
       initials: 'LM',
       name: 'Leandro Morales',
       role: 'Perito',
-      desc: 'Perito em computação forense e especialista em evidências digitais.',
+      desc: 'Leandro Morales é perito em informática e especialista em forense digital, com ampla experiência na análise técnica de provas digitais em processos judiciais, especialmente envolvendo celulares, computadores e sistemas. Atua frequentemente como assistente técnico da defesa, auxiliando advogados na compreensão técnica das evidências e na identificação de falhas metodológicas em perícias digitais.',
       image: '/palestrantes/Leandro.png',
       video: false,
     },
