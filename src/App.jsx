@@ -723,6 +723,7 @@ function Topics() {
     { icon: '💰', title: 'Lavagem de Capitais', desc: 'Fundamentos e estratégias de defesa.' },
     { icon: '🤖', title: 'IA aliada a Defesa', desc: 'Como usar inteligência artificial como ferramenta estratégica.' },
     { icon: '🎤', title: 'Sustentação Oral nos tribunais', desc: 'A arte de defender argumentos com clareza e convencimento nos tribunais.' },
+    { icon: '🏴', title: 'Organizações Criminosas', desc: 'Atuação defensiva em casos envolvendo organizações criminosas.' },
   ]
 
   return (
