@@ -1260,9 +1260,9 @@ function Testimonials() {
   const isMobile = useIsMobile()
   const [playingVideo, setPlayingVideo] = useState(null)
   const testimonials = [
-    { video: '/depoimentos/01.MP4' },
-    { video: '/depoimentos/02.MP4' },
-    { video: '/depoimentos/03.MP4' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4480.MP4' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4481.MP4' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4482.MP4' },
   ]
 
   return (
