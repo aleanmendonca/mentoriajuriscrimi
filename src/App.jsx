@@ -1259,11 +1259,37 @@ function Schedule() {
 function Testimonials() {
   const isMobile = useIsMobile()
   const [playingVideo, setPlayingVideo] = useState(null)
+  const [thumbnails, setThumbnails] = useState({})
+  const videoRefs = useRef({})
+
   const testimonials = [
-    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4480.MP4', poster: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4480.jpg' },
-    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4481.MP4', poster: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4481.jpg' },
-    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4482.MP4', poster: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4482.jpg' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4480.MP4' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4481.MP4' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4482.MP4' },
   ]
+
+  // Gerar thumbnails após carregamento
+  useEffect(() => {
+    testimonials.forEach((t, i) => {
+      if (thumbnails[i]) return
+      const video = document.createElement('video')
+      video.crossOrigin = 'anonymous'
+      video.src = t.video
+      video.muted = true
+      video.preload = 'metadata'
+      video.onloadeddata = () => {
+        video.currentTime = 0.1
+      }
+      video.onseeked = () => {
+        const canvas = document.createElement('canvas')
+        canvas.width = video.videoWidth
+        canvas.height = video.videoHeight
+        const ctx = canvas.getContext('2d')
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+        setThumbnails(prev => ({ ...prev, [i]: canvas.toDataURL('image/jpeg', 0.8) }))
+      }
+    })
+  }, [])
 
   return (
     <section style={{ ...styles.section, background: 'black' }} id="testimonials">
@@ -1288,8 +1314,13 @@ function Testimonials() {
               ) : (
                 <div
                   onClick={() => setPlayingVideo(i)}
-                  style={{ width: '100%', aspectRatio: '9/16', background: `url('${t.poster}') center/cover`, borderRadius: '12px', position: 'relative', cursor: 'pointer', overflow: 'hidden' }}
+                  style={{ width: '100%', aspectRatio: '9/16', background: thumbnails[i] ? `url('${thumbnails[i]}') center/cover` : `linear-gradient(135deg, #1a1a1a, #2a2a2a)`, borderRadius: '12px', position: 'relative', cursor: 'pointer', overflow: 'hidden' }}
                 >
+                  {!thumbnails[i] && (
+                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: '#DC2626' }}>
+                      <div style={{ width: '30px', height: '30px', border: '3px solid #DC2626', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+                    </div>
+                  )}
                   <div style={{
                     position: 'absolute',
                     top: '50%',
