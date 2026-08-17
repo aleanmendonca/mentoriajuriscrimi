@@ -897,7 +897,7 @@ function Professors() {
       initials: 'VP',
       name: 'Viviane Pinheiro',
       role: 'Fundadora da Juriscrimi',
-      desc: 'Advogada criminalista, especialista em tribunal do jury, execução penal e revisão criminal.',
+      desc: 'Atuação nacional, criadora do Método VP para advogados e Fundadora do Congresso Penal, Juriscrimi. Viviane Pinheiro, a "Leoa do Criminal", uma advogada criminalista com 25 anos de experiência que atua nos casos mais complexos, no Tribunal do Júri, Revisão Criminal e Execução Penal — e forma a próxima geração de líderes no Direito Penal.',
       image: '/palestrantes/viviane.png',
       video: false,
     },
