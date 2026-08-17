@@ -1255,7 +1255,26 @@ function Schedule() {
   )
 }
 
-// Testimonials Section
+// Beca Section
+function Beca() {
+  const isMobile = useIsMobile()
+  return (
+    <section style={{ ...styles.section, background: 'black', padding: isMobile ? '40px 20px' : '60px 30px' }}>
+      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+        <img
+          src="/beca.jpeg"
+          alt="Beca"
+          style={{
+            width: '100%',
+            borderRadius: '16px',
+            objectFit: 'cover',
+          }}
+        />
+      </div>
+    </section>
+  )
+}
+
 // Testimonials Section
 function Testimonials() {
   const isMobile = useIsMobile()
@@ -1604,6 +1623,7 @@ export default function App() {
       <ForWho />
       <Professors />
       <Schedule />
+      <Beca />
       <Testimonials />
       <Pricing />
       <FAQ />
