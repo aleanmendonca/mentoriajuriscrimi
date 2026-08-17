@@ -1280,6 +1280,7 @@ function Testimonials() {
   const isMobile = useIsMobile()
   const [playingVideo, setPlayingVideo] = useState(null)
   const [thumbnails, setThumbnails] = useState({})
+  const [thumbnailsFailed, setThumbnailsFailed] = useState({})
   const videoRefs = useRef({})
 
   const testimonials = [
@@ -1290,25 +1291,49 @@ function Testimonials() {
 
   // Gerar thumbnails após carregamento
   useEffect(() => {
-    testimonials.forEach((t, i) => {
-      if (thumbnails[i]) return
+    const loadThumbnail = (t, i) => {
+      if (thumbnails[i] || thumbnailsFailed[i]) return
+
+      // Timeout de 5 segundos - marca como falhou
+      const timeout = setTimeout(() => {
+        if (!thumbnails[i]) {
+          setThumbnailsFailed(prev => ({ ...prev, [i]: true }))
+        }
+      }, 5000)
+
       const video = document.createElement('video')
       video.crossOrigin = 'anonymous'
       video.src = t.video
       video.muted = true
-      video.preload = 'metadata'
+      video.preload = 'auto'
       video.onloadeddata = () => {
         video.currentTime = 0.1
       }
       video.onseeked = () => {
-        const canvas = document.createElement('canvas')
-        canvas.width = video.videoWidth
-        canvas.height = video.videoHeight
-        const ctx = canvas.getContext('2d')
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
-        setThumbnails(prev => ({ ...prev, [i]: canvas.toDataURL('image/jpeg', 0.8) }))
+        clearTimeout(timeout)
+        try {
+          const canvas = document.createElement('canvas')
+          canvas.width = video.videoWidth || 360
+          canvas.height = video.videoHeight || 640
+          const ctx = canvas.getContext('2d')
+          if (ctx) {
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.8)
+            if (dataUrl && dataUrl.length > 1000) {
+              setThumbnails(prev => ({ ...prev, [i]: dataUrl }))
+            }
+          }
+        } catch (e) {
+          setThumbnailsFailed(prev => ({ ...prev, [i]: true }))
+        }
       }
-    })
+      video.onerror = () => {
+        clearTimeout(timeout)
+        setThumbnailsFailed(prev => ({ ...prev, [i]: true }))
+      }
+    }
+
+    testimonials.forEach(loadThumbnail)
   }, [])
 
   return (
@@ -1341,11 +1366,28 @@ function Testimonials() {
                 <div>
                   <div
                     onClick={() => setPlayingVideo(i)}
-                    style={{ width: '100%', aspectRatio: '9/16', background: thumbnails[i] ? `url('${thumbnails[i]}') center/cover` : `linear-gradient(135deg, #1a1a1a, #2a2a2a)`, borderRadius: '12px 12px 0 0', position: 'relative', cursor: 'pointer', overflow: 'hidden' }}
+                    style={{
+                      width: '100%',
+                      aspectRatio: '9/16',
+                      background: thumbnails[i]
+                        ? `url('${thumbnails[i]}') center/cover`
+                        : thumbnailsFailed[i]
+                          ? `linear-gradient(135deg, #2a1515 0%, #1a1a1a 50%, #2a1515 100%)`
+                          : `linear-gradient(135deg, #1a1a1a 0%, #2d1f1f 50%, #1a1a1a 100%)`,
+                      borderRadius: '12px 12px 0 0',
+                      position: 'relative',
+                      cursor: 'pointer',
+                      overflow: 'hidden',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      minHeight: '200px',
+                    }}
                   >
-                    {!thumbnails[i] && (
-                      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: '#DC2626' }}>
-                        <div style={{ width: '30px', height: '30px', border: '3px solid #DC2626', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+                    {!thumbnails[i] && !thumbnailsFailed[i] && (
+                      <div style={{ textAlign: 'center', padding: '20px' }}>
+                        <div style={{ width: '40px', height: '40px', border: '3px solid rgba(220, 38, 38, 0.3)', borderTopColor: '#DC2626', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 10px' }} />
+                        <p style={{ color: '#666', fontSize: '11px' }}>Carregando...</p>
                       </div>
                     )}
                     <div style={{
