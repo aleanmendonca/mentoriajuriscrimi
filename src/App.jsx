@@ -1258,10 +1258,11 @@ function Schedule() {
 // Testimonials Section
 function Testimonials() {
   const isMobile = useIsMobile()
+  const [playingVideo, setPlayingVideo] = useState(null)
   const testimonials = [
-    { video: '', initials: 'RF', name: 'Ricardo Ferreira', location: 'Advogado Criminalista — São Paulo' },
-    { video: '', initials: 'AM', name: 'Ana Maria Costa', location: 'Advogada Criminalista — Belo Horizonte' },
-    { video: '', initials: 'PL', name: 'Pedro Lima', location: 'Advogado Criminalista — Recife' },
+    { video: '/depoimentos/01.MP4' },
+    { video: '/depoimentos/02.MP4' },
+    { video: '/depoimentos/03.MP4' },
   ]
 
   return (
@@ -1272,32 +1273,41 @@ function Testimonials() {
           <h2 style={styles.sectionTitle}>Quem Já Participou</h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(350px, 1fr))', gap: isMobile ? '20px' : '30px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: isMobile ? '20px' : '30px', maxWidth: isMobile ? '100%' : '900px', margin: '0 auto' }}>
           {testimonials.map((t, i) => (
-            <div key={i} style={{...styles.testiCard, padding: isMobile ? '15px' : '20px'}}>
-              {t.video ? (
+            <div key={i}>
+              {playingVideo === i ? (
                 <video
                   controls
-                  style={{ width: '100%', borderRadius: '12px', background: '#1a1a1a' }}
+                  autoPlay
+                  style={{ width: '100%', aspectRatio: '9/16', borderRadius: '12px', background: '#1a1a1a', objectFit: 'cover' }}
                   src={t.video}
+                  onEnded={() => setPlayingVideo(null)}
                 />
               ) : (
-                <div style={{ width: '100%', paddingTop: '56.25%', background: '#1a1a1a', borderRadius: '12px', position: 'relative' }}>
-                  <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: '#DC2626', fontSize: '14px', textAlign: 'center' }}>
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="#DC2626" style={{ marginBottom: '5px' }}>
+                <div
+                  onClick={() => setPlayingVideo(i)}
+                  style={{ width: '100%', aspectRatio: '9/16', background: `linear-gradient(135deg, #1a1a1a, #2a2a2a)`, borderRadius: '12px', position: 'relative', cursor: 'pointer', overflow: 'hidden' }}
+                >
+                  <div style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '60px',
+                    height: '60px',
+                    background: 'rgba(220, 38, 38, 0.9)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="white" style={{ marginLeft: '4px' }}>
                       <path d="M8 5v14l11-7z"/>
                     </svg>
-                    <div>Vídeo em breve</div>
                   </div>
                 </div>
               )}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '15px' }}>
-                <div style={{...styles.testiAvatar, width: isMobile ? '40px' : '50px', height: isMobile ? '40px' : '50px'}}>{t.initials}</div>
-                <div>
-                  <h4 style={{ fontSize: isMobile ? '14px' : '16px', fontWeight: 600, marginBottom: '3px' }}>{t.name}</h4>
-                  <p style={{ fontSize: '12px', color: '#ACACAC', margin: 0 }}>{t.location}</p>
-                </div>
-              </div>
             </div>
           ))}
         </div>
