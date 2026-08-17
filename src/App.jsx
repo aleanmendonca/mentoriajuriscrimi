@@ -763,6 +763,7 @@ function Topics() {
 function Differential() {
   const isMobile = useIsMobile()
   const differentials = [
+    { icon: '💰', title: 'Faturamento', desc: 'Estratégias ensinadas nas Mentorias da Juriscrimi que fizeram advogados alcançarem faturamentos acima de R$ 30 mil reais na advocacia criminal.' },
     { icon: '👨‍⚖️', title: 'Professores que Vivem o Que Ensinam', desc: 'Criminalistas em exercício ativo com experiência real.' },
     { icon: '📁', title: 'Casos Reais como Fio Condutor', desc: 'Temas abordados a partir de casos concretos.' },
     { icon: '📅', title: 'Conteúdo Aplicável Já na Segunda-feira', desc: 'Estratégias prontas para aplicar no escritório.' },
