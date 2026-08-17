@@ -1260,9 +1260,9 @@ function Testimonials() {
   const isMobile = useIsMobile()
   const [playingVideo, setPlayingVideo] = useState(null)
   const testimonials = [
-    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4480.MP4' },
-    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4481.MP4' },
-    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4482.MP4' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4480.MP4', poster: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4480.jpg' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4481.MP4', poster: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4481.jpg' },
+    { video: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4482.MP4', poster: 'https://pub-fbdc5d92c1ea483291b4cb2d51e8f6f7.r2.dev/juriscrimi/IMG_4482.jpg' },
   ]
 
   return (
@@ -1282,12 +1282,13 @@ function Testimonials() {
                   autoPlay
                   style={{ width: '100%', aspectRatio: '9/16', borderRadius: '12px', background: '#1a1a1a', objectFit: 'cover' }}
                   src={t.video}
+                  poster={t.poster}
                   onEnded={() => setPlayingVideo(null)}
                 />
               ) : (
                 <div
                   onClick={() => setPlayingVideo(i)}
-                  style={{ width: '100%', aspectRatio: '9/16', background: `linear-gradient(135deg, #1a1a1a, #2a2a2a)`, borderRadius: '12px', position: 'relative', cursor: 'pointer', overflow: 'hidden' }}
+                  style={{ width: '100%', aspectRatio: '9/16', background: `url('${t.poster}') center/cover`, borderRadius: '12px', position: 'relative', cursor: 'pointer', overflow: 'hidden' }}
                 >
                   <div style={{
                     position: 'absolute',
