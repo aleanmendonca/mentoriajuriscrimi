@@ -722,7 +722,7 @@ function Topics() {
     { icon: '💣', title: 'Grandes Operações', desc: 'Como atuar quando o cliente está no centro.' },
     { icon: '💰', title: 'Lavagem de Capitais', desc: 'Fundamentos e estratégias de defesa.' },
     { icon: '🤖', title: 'IA aliada a Defesa', desc: 'Como usar inteligência artificial como ferramenta estratégica.' },
-    { icon: '🎤', title: 'Sustentação Oral', desc: 'A arte de defender argumentos com clareza e convencimento.' },
+    { icon: '🎤', title: 'Sustentação Oral nos tribunais', desc: 'A arte de defender argumentos com clareza e convencimento nos tribunais.' },
   ]
 
   return (
