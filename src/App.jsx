@@ -1362,16 +1362,15 @@ function Pricing() {
 
             <ul style={{ listStyle: 'none', marginBottom: isMobile ? '20px' : '30px', textAlign: 'left' }}>
               {[
-                'Acesso completo aos 2 dias',
-                'Welcome kit premium',
-                'Mesa VIP frente ao palco',
-                'Certificado de 20h',
-                'Coffee break nos 2 dias',
-                'Sorteio de livros jurídicos',
-                'Material de apoio',
-                'Grupo WhatsApp com professores',
-                'Live de preparação com Viviane',
-                'Acompanhamento 15 dias pós-evento',
+                'Acesso completo aos 2 dias de imersão.',
+                'Welcome kit premium exclusivo.',
+                'Mesa VIP.',
+                'Coffee break nos 2 dias.',
+                'Certificado de 20 horas.',
+                'Sorteio de livros jurídicos selecionados.',
+                'Material de apoio.',
+                'Grupo de WhatsApp exclusivo.',
+                'Sorteio de uma beca sob medida.',
               ].map((text, j) => (
                 <li
                   key={j}
