@@ -899,6 +899,7 @@ function Professors() {
       role: 'Fundadora da Juriscrimi',
       desc: 'Advogada criminalista com atuação nacional e internacional, conhecida como a "Leoa do Criminal" pela forma combativa com que soluciona casos de alta complexidade, como tribunal do júri, execução penal, revisão criminal e organização criminosa. É fundadora e CEO do Congresso Penal JurisCrimi e criadora do método VP Criminal, dedicando-se à formação de advogados criminalistas. Atuou no caso internacional Marcelo Piloto, no Júri Federal do Rio de Janeiro, um dos casos criminais mais midiáticos do país.',
       image: '/palestrantes/novos/viviane.jpeg',
+      instagram: 'https://www.instagram.com/vivianepinheiroadvogada/',
       video: false,
     },
     {
@@ -907,6 +908,7 @@ function Professors() {
       role: 'Criminalista',
       desc: 'Advogado criminalista e especialista em grandes operações.',
       image: '/palestrantes/novos/sergio.jpeg',
+      instagram: 'https://www.instagram.com/sergiofigueiredoadv/',
       video: false,
     },
     {
@@ -915,6 +917,7 @@ function Professors() {
       role: 'Criminalista',
       desc: 'Autor do livro "Lavagem de Capitais: Teoria e Prática Defensiva".',
       image: '/palestrantes/novos/marlon.PNG',
+      instagram: 'https://www.instagram.com/marlonricardocriminalista/',
       video: false,
     },
     {
@@ -923,6 +926,7 @@ function Professors() {
       role: 'Mestre em Direito',
       desc: 'Mestre em Direito, advogado criminalista e professor universitário.',
       image: '/palestrantes/novos/welbert.jpeg',
+      instagram: 'https://www.instagram.com/welbertgfreitas/',
       video: false,
     },
     {
@@ -931,6 +935,7 @@ function Professors() {
       role: 'Perito',
       desc: 'Leandro Morales é perito em informática e especialista em forense digital, com ampla experiência na análise técnica de provas digitais em processos judiciais, especialmente envolvendo celulares, computadores e sistemas. Atua frequentemente como assistente técnico da defesa, auxiliando advogados na compreensão técnica das evidências e na identificação de falhas metodológicas em perícias digitais.',
       image: '/palestrantes/novos/leandro.jpeg',
+      instagram: 'https://www.instagram.com/leandro_pericia/',
       video: false,
     },
     {
@@ -939,6 +944,7 @@ function Professors() {
       role: 'Criminalista',
       desc: 'Advogado criminalista e especialista em Tribunal do Júri.',
       image: '/palestrantes/novos/jader.jpeg',
+      instagram: 'https://www.instagram.com/jader.aldrin/',
       video: false,
     },
     {
@@ -947,6 +953,7 @@ function Professors() {
       role: 'Criminalista',
       desc: 'Advogado criminalista com ampla experiência em casos de alta complexidade.',
       image: '/palestrantes/novos/david.jpeg',
+      instagram: 'https://www.instagram.com/davidalencaradv/',
       video: false,
     },
   ]
@@ -1009,7 +1016,10 @@ function Professors() {
                 />
               </div>
               <div style={{ padding: '30px', flex: 1 }}>
-                <h3 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '10px' }}>{professors[0].name}</h3>
+                <h3 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '5px' }}>{professors[0].name}</h3>
+                <a href={professors[0].instagram} target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: '#DC2626', marginBottom: '10px', display: 'block' }}>
+                  @{professors[0].instagram.replace('https://www.instagram.com/', '').replace('/', '')}
+                </a>
                 <p style={{
                   fontSize: '14px',
                   color: '#DC2626',
@@ -1067,7 +1077,10 @@ function Professors() {
               </div>
               {/* Texto embaixo */}
               <div style={{ padding: '15px 18px' }}>
-                <h3 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '4px' }}>{p.name}</h3>
+                <h3 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '3px' }}>{p.name}</h3>
+                <a href={p.instagram} target="_blank" rel="noopener noreferrer" style={{ fontSize: '11px', color: '#DC2626', marginBottom: '6px', display: 'block' }}>
+                  @{p.instagram.replace('https://www.instagram.com/', '').replace('/', '')}
+                </a>
                 <p style={{
                   fontSize: '11px',
                   color: '#DC2626',
